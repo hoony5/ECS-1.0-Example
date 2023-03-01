@@ -58,3 +58,39 @@ public partial struct SpawnSystem : ISystem
                 }
         }
 }
+/* when using SytemBase, Actually there is no difference between both of
+
+// SystemBase Version
+ protected override void OnUpdate()
+    {
+        float time = UnityEngine.Time.realtimeSinceStartup;
+        
+       EntityCommandBuffer ecb = SystemAPI
+                .GetSingleton<BeginFixedStepSimulationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(EntityManager.WorldUnmanaged);
+            
+        // Create Prefab instance once.
+        foreach ((PresentationGO prefabData, Entity entity) in SystemAPI.Query<PresentationGO>().WithEntityAccess())
+        {
+            var go = GameObject.Instantiate(prefabData.prefab);
+            ecb.RemoveComponent<SpawnData>(entity);
+        }
+
+        // Generate Random Value
+        RandomData random = SystemAPI.GetSingleton<RandomData>();
+                
+        // Query on the SystemBase
+        // you must have Need 'WithoutBurst'
+        Entities
+            .WithAll<CharacterData>()
+            .WithoutBurst() 
+            .ForEach((Entity e, CharacterData data) =>
+            {
+                if(!data.animator.GetCurrentAnimatorStateInfo(0).IsName("run"))
+                {
+                    float ranValue = random.Random.NextFloat(1, 3f);
+                    data.animator.SetFloat("Speed",ranValue);
+                    data.animator.Play("run");
+                }
+            }).Run();
+    }
+*/
