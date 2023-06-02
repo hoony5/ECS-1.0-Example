@@ -5,7 +5,10 @@
   - 1. Using physics system for ECS , try to access trigger and collision.
   - 2. Using State pattern, I'm going to create AI.
 
-  ## 2023-02-28
+## [2022 LTS]
+   ## Released LTS contains DOTS
+       - I update the git by toy projectas.
+## 2023-02-28
     - 1. Access Unity Component. 
 ## [1.0.0-pre.44]
 
